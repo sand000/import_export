@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="login">
+        <input type="text" id="password" placeholder="Password">
+        <input type="text" id="username" placeholder="User Name">
+        <button id="login">Login</button>
+    </div>
+</body>
+</html>
+
+<script type="module">
+
+    import navbar from "../components/navbar.js"
+    document.getElementById("navbar").innerHTML = navbar();
+
+
+ let login =  async () =>{
+     let user_data ={
+         name: document.getElementById("name"),
+         password: document.getElementById("password")
+     };
+
+     user_data = JSON.stringify(user_data);
+
+     let res = await fetch("https://masai-api-mocker.herokuapp.com/auth/login",{
+         method:"POST",
+         body: user_data,
+
+         headers: {
+             "Content-Type": "application/json",
+         }
+     });
+
+ }
+
+
+ document.getElementById("login").addEventListener('click',user_data)
+</script>
